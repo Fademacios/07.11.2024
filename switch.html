@@ -1,5 +1,5 @@
 <html>
-  <body>siema
+  <body><h1>Konwerter Jednostek</h1>
     <script>
       while (isNaN(number1)) {
         number1 = parseFloat(prompt('Wprowadź drugą liczbę:'));
@@ -8,11 +8,21 @@
         }
       }
     var jednostka = (prompt('Wprowadź jednostkę (km lub mile):'));
-    if jednostka != "km" || "mile"{
-      document.write('Nie znam tej jednostki, podaj km lub mile'));
-    }
+     if (jednostka != "km" && jednostka != "mile") {
+        document.write('Nie znam tej jednostki, podaj km lub mile.<br>');
+      } else {
+        var wynik;
+        switch (jednostka) {
+          case "km":
+            wynik = number * 0.62137119;
+            document.write(number + ' km to ' + wynik + ' mil.<br>');
+            break;
 
-    
+          case "mile":
+            wynik = number * 1.609344;
+            document.write(number + ' mil to ' + wynik + ' km.<br>');
+            break;
+    }
     </script>
   </body>
 </html>
