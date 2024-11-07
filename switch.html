@@ -2,9 +2,10 @@
   <body>
     <h1>Konwerter jednostek</h1>
     <script>
+      var number = NaN;
       
       while (isNaN(number)) {
-        var number = parseInt(prompt('Wprowadź liczbę:'));
+        number = parseInt(prompt('Wprowadź liczbę:'));
         if (isNaN(number)) {
           document.write('Wprowadź poprawną liczbę.<br>');
         }
