@@ -1,34 +1,123 @@
-<html>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konwerter jednostek</title>
+    <style>
+      /* Style for the whole page */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        color: #333;
+      }
+
+      /* Header style */
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #5c6bc0;
+      }
+
+      /* Styling for the messages displayed on the page */
+      .message {
+        font-size: 18px;
+        color: #e53935;
+        margin-top: 10px;
+      }
+
+      /* Container for the prompts */
+      .converter-container {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      /* Style for the input fields and buttons */
+      input[type="text"], input[type="number"] {
+        padding: 10px;
+        margin: 10px 0;
+        width: 80%;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      select {
+        padding: 10px;
+        font-size: 18px;
+        width: 85%;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #5c6bc0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #3f51b5;
+      }
+
+      /* Styling the result */
+      .result {
+        font-size: 22px;
+        color: #4caf50;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
   <body>
     <h1>Konwerter jednostek</h1>
-    <script>
-      var number = NaN;
-      
-      while (isNaN(number)) {
-        number = parseInt(prompt('Wprowadź liczbę:'));
-        if (isNaN(number)) {
-          document.write('Wprowadź poprawną liczbę.<br>');
+    <div class="converter-container">
+      <div id="message" class="message"></div>
+      <script>
+        var number = NaN;
+
+        while (isNaN(number)) {
+          number = parseInt(prompt('Wprowadź liczbę:'));
+          if (isNaN(number)) {
+            document.getElementById('message').innerHTML = 'Wprowadź poprawną liczbę.';
+          }
         }
-      }
 
-      var jednostka = prompt('Wprowadź jednostkę (km lub mile):');
+        var jednostka = prompt('Wprowadź jednostkę (km lub mile):').toLowerCase();
 
-      if (jednostka != "km" && jednostka != "mile") {
-        document.write('Nie znam tej jednostki, podaj km lub mile.<br>');
-      } else {
-        var wynik;
-        switch (jednostka) {
-          case "km":
-            wynik = number * 0.62137119;
-            document.write(number + ' km to ' + wynik + ' mil.<br>');
-            break;
+        if (jednostka !== "km" && jednostka !== "mile") {
+          document.getElementById('message').innerHTML = 'Nie znam tej jednostki, podaj km lub mile.';
+        } else {
+          var wynik;
+          switch (jednostka) {
+            case "km":
+              wynik = number * 0.62137119;
+              document.getElementById('message').innerHTML = number + ' km to ' + wynik.toFixed(2) + ' mil.';
+              break;
 
-          case "mile":
-            wynik = number * 1.609344;
-            document.write(number + ' mil to ' + wynik + ' km.<br>');
-            break;
+            case "mile":
+              wynik = number * 1.609344;
+              document.getElementById('message').innerHTML = number + ' mil to ' + wynik.toFixed(2) + ' km.';
+              break;
+          }
         }
-      }
-    </script>
+      </script>
+    </div>
   </body>
 </html>
