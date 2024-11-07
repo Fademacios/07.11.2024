@@ -2,13 +2,15 @@
   <body>siema
   <body><h1>Konwerter Jednostek</h1>
     <script>
-      while (isNaN(number1)) {
-        number1 = parseFloat(prompt('Wprowadź drugą liczbę:'));
-@@ -8,11 +8,21 @@
+      while (isNaN(number)) {
+        var number = parseInt(prompt('Wprowadź liczbę:'));
+        if (isNaN(number)) {
+          document.write('Wprowadź poprawna liczbe.'));
+
         }
       }
     var jednostka = (prompt('Wprowadź jednostkę (km lub mile):'));
-    if jednostka != "km" || "mile"{
+    if jednostka != "km" && "mile"{
       document.write('Nie znam tej jednostki, podaj km lub mile'));
     }
      if (jednostka != "km" && jednostka != "mile") {
